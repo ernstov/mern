@@ -1,0 +1,48 @@
+namespace: mern
+mern:
+  defines: runnable
+  metadata:
+    name: mern
+    description: Simple starter description for Redux with React and Babel support
+    icon: https://github.com/amazingandyyy/mern
+  containers:
+    mern:
+      build: .
+  services:
+    express-server-port:
+      container: mern
+      port: 8000
+      host-port: 8000
+      publish: false
+      protocol: TCP
+      description: Port on which the Express server runs
+  connections:
+    mongodb:
+      target: ''
+      service: ''
+  variables:
+    node-env:
+      env: NODE_ENV
+      type: string
+      description: Application environment
+      value: production
+    jwt-secret:
+      env: JWT_SECRET
+      type: string
+      description: Secret key for JWT
+      value: '!!!SETME-USE-SECRETS!!!'
+    mongodb-uri:
+      env: MONGODB_URI
+      type: string
+      description: MongoDB connection string
+      value: <- connection-hostname("mongodb")
+    api-uri:
+      env: API_URI
+      type: string
+      description: API endpoint for client side
+      value: http://localhost:8000
+    react-app-api-uri:
+      env: REACT_APP_API_URI
+      type: string
+      description: API endpoint for production
+      value: https://mern-amazingandyyy.herokuapp.com
